@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Room Inventory Tracking</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            color: #333;
+        }
+        .form-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+            color: #555;
+        }
+        header .date {
+            font-size: 16px;
+            color: #777;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 16px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f0f4f8;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .submit-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            padding: 15px 25px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        .submit-button:hover {
+            background: linear-gradient(135deg, #0056b3, #003f7f);
+            transform: translateY(-3px);
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const dateElement = document.querySelector('.date');
+            const today = new Date().toLocaleDateString();
+            dateElement.textContent = `Date: ${today}`;
+        });
+
+        function calculateSummary() {
+            const jumboWraps = parseInt(document.getElementById('jumbo-wraps').value) || 0;
+            const jumboHands = parseInt(document.getElementById('jumbo-hands').value) || 0;
+            const smallWraps = parseInt(document.getElementById('small-wraps').value) || 0;
+            const smallHands = parseInt(document.getElementById('small-hands').value) || 0;
+            const reworkPallets = parseInt(document.getElementById('rework-pallets').value) || 0;
+
+            const chemical707 = parseInt(document.getElementById('chemical-707').value) || 0;
+            const airLubricant = parseInt(document.getElementById('air-lubricant').value) || 0;
+            const knockerLoose = parseInt(document.getElementById('knocker-loose').value) || 0;
+            const otherChemical = parseInt(document.getElementById('other-chemical').value) || 0;
+
+            const summary = `
+                Summary for End of Shift:\n
+                Jumbo Wraps Used: ${jumboWraps}\n
+                Jumbo Hands Used: ${jumboHands}\n
+                Small Wraps Used: ${smallWraps}\n
+                Small Hands Used: ${smallHands}\n
+                Rework Pallets Produced: ${reworkPallets}\n
+
+                Chemicals Used:\n
+                - 707: ${chemical707}\n
+                - Air Lubricant: ${airLubricant}\n
+                - Knocker Loose: ${knockerLoose}\n
+                - Other: ${otherChemical}
+
+";
+
+            alert(summary);
+        }
+    </script>
+</head>
+<body>
+    <div class="form-container">
+        <header>
+            <h1>Box Room Inventory Tracking</h1>
+            <div class="date"></div>
+        </header>
+        <form onsubmit="calculateSummary(); return false;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Material</th>
+                        <th>Count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Jumbo Wraps</td>
+                        <td><input type="number" id="jumbo-wraps" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <td>Jumbo Hands</td>
+                        <td><input type="number" id="jumbo-hands" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <td>Small Box Wraps</td>
+                        <td><input type="number" id="small-wraps" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <td>Small Box Hands</td>
+                        <td><input type="number" id="small-hands" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <td>Rework Pallets Produced</td>
+                        <td><input type="number" id="rework-pallets" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Chemicals Used</th>
+                    </tr>
+                    <tr>
+                        <td>707</td>
+                        <td><input type="number" id="chemical-707" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <td>Air Lubricant</td>
+                        <td><input type="number" id="air-lubricant" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <td>Knocker Loose</td>
+                        <td><input type="number" id="knocker-loose" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <td>Other (Specify)</td>
+                        <td><input type="number" id="other-chemical" placeholder="Enter count"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="text-align: center;">
+                <button type="submit" class="submit-button">Submit and View Summary</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
