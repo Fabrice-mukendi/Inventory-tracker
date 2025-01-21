@@ -90,13 +90,20 @@
         function calculateSummary() {
             let summary = "Summary for End of Shift:\n\n";
 
+            const machines = {
+                1: "Jumbo",
+                2: "Small",
+                3: "Jumbo",
+                4: "Small"
+            };
+
             for (let i = 1; i <= 4; i++) {
                 const jumboWraps = parseInt(document.getElementById(`jumbo-wraps-${i}`).value) || 0;
                 const jumboHands = parseInt(document.getElementById(`jumbo-hands-${i}`).value) || 0;
                 const smallWraps = parseInt(document.getElementById(`small-wraps-${i}`).value) || 0;
                 const smallHands = parseInt(document.getElementById(`small-hands-${i}`).value) || 0;
 
-                summary += `Box Machine #${i}:\n`;
+                summary += `Box Machine #${i} (${machines[i]}):\n`;
                 summary += `- Jumbo Wraps: ${jumboWraps}\n`;
                 summary += `- Jumbo Hands: ${jumboHands}\n`;
                 summary += `- Small Wraps: ${smallWraps}\n`;
@@ -139,7 +146,7 @@
                 <tbody>
                     <!-- Box Machine 1 -->
                     <tr>
-                        <td rowspan="4">Box Machine #1 (Jumbo)</td>
+                        <td rowspan="2">Box Machine #1 (Jumbo)</td>
                         <td>Jumbo Wraps</td>
                         <td><input type="number" id="jumbo-wraps-1" placeholder="Enter count"></td>
                     </tr>
@@ -147,26 +154,10 @@
                         <td>Jumbo Hands</td>
                         <td><input type="number" id="jumbo-hands-1" placeholder="Enter count"></td>
                     </tr>
-                    <tr>
-                        <td>Small Wraps</td>
-                        <td><input type="number" id="small-wraps-1" placeholder="Enter count"></td>
-                    </tr>
-                    <tr>
-                        <td>Small Hands</td>
-                        <td><input type="number" id="small-hands-1" placeholder="Enter count"></td>
-                    </tr>
 
                     <!-- Box Machine 2 -->
                     <tr>
-                        <td rowspan="4">Box Machine #2 (Small)</td>
-                        <td>Jumbo Wraps</td>
-                        <td><input type="number" id="jumbo-wraps-2" placeholder="Enter count"></td>
-                    </tr>
-                    <tr>
-                        <td>Jumbo Hands</td>
-                        <td><input type="number" id="jumbo-hands-2" placeholder="Enter count"></td>
-                    </tr>
-                    <tr>
+                        <td rowspan="2">Box Machine #2 (Small)</td>
                         <td>Small Wraps</td>
                         <td><input type="number" id="small-wraps-2" placeholder="Enter count"></td>
                     </tr>
@@ -177,7 +168,7 @@
 
                     <!-- Box Machine 3 -->
                     <tr>
-                        <td rowspan="4">Box Machine #3 (Jumbo)</td>
+                        <td rowspan="2">Box Machine #3 (Jumbo)</td>
                         <td>Jumbo Wraps</td>
                         <td><input type="number" id="jumbo-wraps-3" placeholder="Enter count"></td>
                     </tr>
@@ -185,26 +176,10 @@
                         <td>Jumbo Hands</td>
                         <td><input type="number" id="jumbo-hands-3" placeholder="Enter count"></td>
                     </tr>
-                    <tr>
-                        <td>Small Wraps</td>
-                        <td><input type="number" id="small-wraps-3" placeholder="Enter count"></td>
-                    </tr>
-                    <tr>
-                        <td>Small Hands</td>
-                        <td><input type="number" id="small-hands-3" placeholder="Enter count"></td>
-                    </tr>
 
                     <!-- Box Machine 4 -->
                     <tr>
-                        <td rowspan="4">Box Machine #4 (Small)</td>
-                        <td>Jumbo Wraps</td>
-                        <td><input type="number" id="jumbo-wraps-4" placeholder="Enter count"></td>
-                    </tr>
-                    <tr>
-                        <td>Jumbo Hands</td>
-                        <td><input type="number" id="jumbo-hands-4" placeholder="Enter count"></td>
-                    </tr>
-                    <tr>
+                        <td rowspan="2">Box Machine #4 (Small)</td>
                         <td>Small Wraps</td>
                         <td><input type="number" id="small-wraps-4" placeholder="Enter count"></td>
                     </tr>
@@ -238,4 +213,12 @@
                         <td colspan="2">Other (Specify)</td>
                         <td><input type="number" id="other-chemical" placeholder="Enter count"></td>
                     </tr>
-                </tbody
+                </tbody>
+            </table>
+            <div style="text-align: center;">
+                <button type="submit" class="submit-button">Submit and View Summary</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
