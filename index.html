@@ -53,7 +53,7 @@
             font-weight: bold;
             text-transform: uppercase;
         }
-        input[type="number"] {
+        input[type="number"], input[type="text"] {
             width: 100%;
             padding: 8px;
             border: 1px solid #ccc;
@@ -107,6 +107,7 @@
                 const airLubricant = parseInt(document.getElementById(`air-lubricant-${i}`).value) || 0;
                 const knockerLoose = parseInt(document.getElementById(`knocker-loose-${i}`).value) || 0;
                 const otherChemical = parseInt(document.getElementById(`other-chemical-${i}`).value) || 0;
+                const otherChemicalDetails = document.getElementById(`other-chemical-details-${i}`).value || "N/A";
 
                 summary += `Box Machine #${i} (${machines[i]}):\n`;
                 summary += `- Jumbo Wraps: ${jumboWraps}\n`;
@@ -117,7 +118,7 @@
                 summary += `  - 707: ${chemical707}\n`;
                 summary += `  - Air Lubricant: ${airLubricant}\n`;
                 summary += `  - Knocker Loose: ${knockerLoose}\n`;
-                summary += `  - Other: ${otherChemical}\n\n`;
+                summary += `  - Other: ${otherChemical} (Details: ${otherChemicalDetails})\n\n`;
             }
 
             const reworkPallets = parseInt(document.getElementById('rework-pallets').value) || 0;
@@ -147,7 +148,7 @@
                 <tbody>
                     <!-- Box Machine 1 -->
                     <tr>
-                        <td rowspan="6">Box Machine #1 (Jumbo)</td>
+                        <td rowspan="7">Box Machine #1 (Jumbo)</td>
                         <td>Jumbo Wraps</td>
                         <td><input type="number" id="jumbo-wraps-1" placeholder="Enter count"></td>
                     </tr>
@@ -169,12 +170,15 @@
                     </tr>
                     <tr>
                         <td>Other (Specify)</td>
-                        <td><input type="number" id="other-chemical-1" placeholder="Enter count"></td>
+                        <td>
+                            <input type="number" id="other-chemical-1" placeholder="Enter count">
+                            <input type="text" id="other-chemical-details-1" placeholder="Specify product">
+                        </td>
                     </tr>
 
                     <!-- Box Machine 2 -->
                     <tr>
-                        <td rowspan="6">Box Machine #2 (Small)</td>
+                        <td rowspan="7">Box Machine #2 (Small)</td>
                         <td>Small Wraps</td>
                         <td><input type="number" id="small-wraps-2" placeholder="Enter count"></td>
                     </tr>
@@ -196,12 +200,15 @@
                     </tr>
                     <tr>
                         <td>Other (Specify)</td>
-                        <td><input type="number" id="other-chemical-2" placeholder="Enter count"></td>
+                        <td>
+                            <input type="number" id="other-chemical-2" placeholder="Enter count">
+                            <input type="text" id="other-chemical-details-2" placeholder="Specify product">
+                        </td>
                     </tr>
 
                     <!-- Box Machine 3 -->
                     <tr>
-                        <td rowspan="6">Box Machine #3 (Jumbo)</td>
+                        <td rowspan="7">Box Machine #3 (Jumbo)</td>
                         <td>Jumbo Wraps</td>
                         <td><input type="number" id="jumbo-wraps-3" placeholder="Enter count"></td>
                     </tr>
@@ -223,12 +230,15 @@
                     </tr>
                     <tr>
                         <td>Other (Specify)</td>
-                        <td><input type="number" id="other-chemical-3" placeholder="Enter count"></td>
+                        <td>
+                            <input type="number" id="other-chemical-3" placeholder="Enter count">
+                            <input type="text" id="other-chemical-details-3" placeholder="Specify product">
+                        </td>
                     </tr>
 
                     <!-- Box Machine 4 -->
                     <tr>
-                        <td rowspan="6">Box Machine #4 (Small)</td>
+                        <td rowspan="7">Box Machine #4 (Small)</td>
                         <td>Small Wraps</td>
                         <td><input type="number" id="small-wraps-4" placeholder="Enter count"></td>
                     </tr>
@@ -250,7 +260,10 @@
                     </tr>
                     <tr>
                         <td>Other (Specify)</td>
-                        <td><input type="number" id="other-chemical-4" placeholder="Enter count"></td>
+                        <td>
+                            <input type="number" id="other-chemical-4" placeholder="Enter count">
+                            <input type="text" id="other-chemical-details-4" placeholder="Specify product">
+                        </td>
                     </tr>
 
                     <!-- Rework Pallets -->
