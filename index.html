@@ -86,6 +86,26 @@
             const today = new Date().toLocaleDateString();
             dateElement.textContent = `Date: ${today}`;
         });
+
+        function generateSummary(event) {
+            event.preventDefault();
+
+            const formData = new FormData(event.target);
+            let summary = `Summary for ${formData.get('person_name')}\nDate: ${new Date().toLocaleDateString()}\n\n`;
+
+            for (const [key, value] of formData.entries()) {
+                if (key.startsWith('time_')) {
+                    const material = key.replace('time_', '').replace(/_/g, ' ').toUpperCase();
+                    const countKey = key.replace('time_', '');
+                    const countValue = formData.get(countKey);
+                    summary += `Material: ${material}\nCount: ${countValue}\nTime: ${value}\n\n`;
+                }
+            }
+
+            alert(summary);
+
+            event.target.submit();
+        }
     </script>
 </head>
 <body>
@@ -95,7 +115,7 @@
             <h1>Box Room Inventory Tracking</h1>
             <div class="date"></div>
         </header>
-        <form action="https://formspree.io/f/mdkkjgrr" method="POST">
+        <form action="https://formspree.io/f/mdkkjgrr" method="POST" onsubmit="generateSummary(event)">
             <label for="person_name" style="font-size: 18px; font-weight: bold;">Person Completing Inventory:</label>
             <input type="text" id="person_name" name="person_name" placeholder="Enter your name" required>
             <table>
@@ -194,15 +214,4 @@
                     </tr>
                     <tr>
                         <td>707</td>
-                        <td><input type="number" name="chemical_707_3" placeholder="Enter count"></td>
-                        <td><input type="time" name="time_chemical_707_3"></td>
-                    </tr>
-                    <tr>
-                        <td>Air Lubricant</td>
-                        <td><input type="number" name="air_lubricant_3" placeholder="Enter count"></td>
-                        <td><input type="time" name="time_air_lubricant_3"></td>
-                    </tr>
-                    <tr>
-                        <td>Knocker Loose</td>
-                        <td><input type="number" name="knocker_loose_3" placeholder="Enter count"></td>
-                        <td
+                        <td><input type="number
