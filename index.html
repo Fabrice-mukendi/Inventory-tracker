@@ -103,25 +103,26 @@
                 const smallWraps = parseInt(document.getElementById(`small-wraps-${i}`).value) || 0;
                 const smallHands = parseInt(document.getElementById(`small-hands-${i}`).value) || 0;
 
+                const chemical707 = parseInt(document.getElementById(`chemical-707-${i}`).value) || 0;
+                const airLubricant = parseInt(document.getElementById(`air-lubricant-${i}`).value) || 0;
+                const knockerLoose = parseInt(document.getElementById(`knocker-loose-${i}`).value) || 0;
+                const otherChemical = parseInt(document.getElementById(`other-chemical-${i}`).value) || 0;
+
                 summary += `Box Machine #${i} (${machines[i]}):\n`;
                 summary += `- Jumbo Wraps: ${jumboWraps}\n`;
                 summary += `- Jumbo Hands: ${jumboHands}\n`;
                 summary += `- Small Wraps: ${smallWraps}\n`;
-                summary += `- Small Hands: ${smallHands}\n\n`;
+                summary += `- Small Hands: ${smallHands}\n`;
+                summary += `- Chemicals Used:\n`;
+                summary += `  - 707: ${chemical707}\n`;
+                summary += `  - Air Lubricant: ${airLubricant}\n`;
+                summary += `  - Knocker Loose: ${knockerLoose}\n`;
+                summary += `  - Other: ${otherChemical}\n\n`;
             }
 
             const reworkPallets = parseInt(document.getElementById('rework-pallets').value) || 0;
-            const chemical707 = parseInt(document.getElementById('chemical-707').value) || 0;
-            const airLubricant = parseInt(document.getElementById('air-lubricant').value) || 0;
-            const knockerLoose = parseInt(document.getElementById('knocker-loose').value) || 0;
-            const otherChemical = parseInt(document.getElementById('other-chemical').value) || 0;
 
             summary += `Rework Pallets Produced: ${reworkPallets}\n\n`;
-            summary += `Chemicals Used:\n`;
-            summary += `- 707: ${chemical707}\n`;
-            summary += `- Air Lubricant: ${airLubricant}\n`;
-            summary += `- Knocker Loose: ${knockerLoose}\n`;
-            summary += `- Other: ${otherChemical}\n`;
 
             alert(summary);
         }
@@ -146,7 +147,7 @@
                 <tbody>
                     <!-- Box Machine 1 -->
                     <tr>
-                        <td rowspan="2">Box Machine #1 (Jumbo)</td>
+                        <td rowspan="6">Box Machine #1 (Jumbo)</td>
                         <td>Jumbo Wraps</td>
                         <td><input type="number" id="jumbo-wraps-1" placeholder="Enter count"></td>
                     </tr>
@@ -154,10 +155,26 @@
                         <td>Jumbo Hands</td>
                         <td><input type="number" id="jumbo-hands-1" placeholder="Enter count"></td>
                     </tr>
+                    <tr>
+                        <td>707</td>
+                        <td><input type="number" id="chemical-707-1" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <td>Air Lubricant</td>
+                        <td><input type="number" id="air-lubricant-1" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <td>Knocker Loose</td>
+                        <td><input type="number" id="knocker-loose-1" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <td>Other (Specify)</td>
+                        <td><input type="number" id="other-chemical-1" placeholder="Enter count"></td>
+                    </tr>
 
                     <!-- Box Machine 2 -->
                     <tr>
-                        <td rowspan="2">Box Machine #2 (Small)</td>
+                        <td rowspan="6">Box Machine #2 (Small)</td>
                         <td>Small Wraps</td>
                         <td><input type="number" id="small-wraps-2" placeholder="Enter count"></td>
                     </tr>
@@ -165,10 +182,26 @@
                         <td>Small Hands</td>
                         <td><input type="number" id="small-hands-2" placeholder="Enter count"></td>
                     </tr>
+                    <tr>
+                        <td>707</td>
+                        <td><input type="number" id="chemical-707-2" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <td>Air Lubricant</td>
+                        <td><input type="number" id="air-lubricant-2" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <td>Knocker Loose</td>
+                        <td><input type="number" id="knocker-loose-2" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <td>Other (Specify)</td>
+                        <td><input type="number" id="other-chemical-2" placeholder="Enter count"></td>
+                    </tr>
 
                     <!-- Box Machine 3 -->
                     <tr>
-                        <td rowspan="2">Box Machine #3 (Jumbo)</td>
+                        <td rowspan="6">Box Machine #3 (Jumbo)</td>
                         <td>Jumbo Wraps</td>
                         <td><input type="number" id="jumbo-wraps-3" placeholder="Enter count"></td>
                     </tr>
@@ -176,10 +209,26 @@
                         <td>Jumbo Hands</td>
                         <td><input type="number" id="jumbo-hands-3" placeholder="Enter count"></td>
                     </tr>
+                    <tr>
+                        <td>707</td>
+                        <td><input type="number" id="chemical-707-3" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <td>Air Lubricant</td>
+                        <td><input type="number" id="air-lubricant-3" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <td>Knocker Loose</td>
+                        <td><input type="number" id="knocker-loose-3" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <td>Other (Specify)</td>
+                        <td><input type="number" id="other-chemical-3" placeholder="Enter count"></td>
+                    </tr>
 
                     <!-- Box Machine 4 -->
                     <tr>
-                        <td rowspan="2">Box Machine #4 (Small)</td>
+                        <td rowspan="6">Box Machine #4 (Small)</td>
                         <td>Small Wraps</td>
                         <td><input type="number" id="small-wraps-4" placeholder="Enter count"></td>
                     </tr>
@@ -187,31 +236,27 @@
                         <td>Small Hands</td>
                         <td><input type="number" id="small-hands-4" placeholder="Enter count"></td>
                     </tr>
+                    <tr>
+                        <td>707</td>
+                        <td><input type="number" id="chemical-707-4" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <td>Air Lubricant</td>
+                        <td><input type="number" id="air-lubricant-4" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <td>Knocker Loose</td>
+                        <td><input type="number" id="knocker-loose-4" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <td>Other (Specify)</td>
+                        <td><input type="number" id="other-chemical-4" placeholder="Enter count"></td>
+                    </tr>
 
-                    <!-- Other Details -->
+                    <!-- Rework Pallets -->
                     <tr>
                         <th colspan="2">Rework Pallets Produced</th>
                         <td><input type="number" id="rework-pallets" placeholder="Enter count"></td>
-                    </tr>
-                    <tr>
-                        <th colspan="2">Chemicals Used</th>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">707</td>
-                        <td><input type="number" id="chemical-707" placeholder="Enter count"></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">Air Lubricant</td>
-                        <td><input type="number" id="air-lubricant" placeholder="Enter count"></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">Knocker Loose</td>
-                        <td><input type="number" id="knocker-loose" placeholder="Enter count"></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">Other (Specify)</td>
-                        <td><input type="number" id="other-chemical" placeholder="Enter count"></td>
                     </tr>
                 </tbody>
             </table>
