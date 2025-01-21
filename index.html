@@ -24,6 +24,10 @@
             text-align: center;
             margin-bottom: 30px;
         }
+        header img {
+            width: 150px;
+            margin-bottom: 15px;
+        }
         header h1 {
             margin: 0;
             font-size: 28px;
@@ -84,32 +88,33 @@
         });
 
         function calculateSummary() {
-            const jumboWraps = parseInt(document.getElementById('jumbo-wraps').value) || 0;
-            const jumboHands = parseInt(document.getElementById('jumbo-hands').value) || 0;
-            const smallWraps = parseInt(document.getElementById('small-wraps').value) || 0;
-            const smallHands = parseInt(document.getElementById('small-hands').value) || 0;
-            const reworkPallets = parseInt(document.getElementById('rework-pallets').value) || 0;
+            let summary = "Summary for End of Shift:\n\n";
 
+            for (let i = 1; i <= 4; i++) {
+                const jumboWraps = parseInt(document.getElementById(`jumbo-wraps-${i}`).value) || 0;
+                const jumboHands = parseInt(document.getElementById(`jumbo-hands-${i}`).value) || 0;
+                const smallWraps = parseInt(document.getElementById(`small-wraps-${i}`).value) || 0;
+                const smallHands = parseInt(document.getElementById(`small-hands-${i}`).value) || 0;
+
+                summary += `Box Machine #${i}:\n`;
+                summary += `- Jumbo Wraps: ${jumboWraps}\n`;
+                summary += `- Jumbo Hands: ${jumboHands}\n`;
+                summary += `- Small Wraps: ${smallWraps}\n`;
+                summary += `- Small Hands: ${smallHands}\n\n`;
+            }
+
+            const reworkPallets = parseInt(document.getElementById('rework-pallets').value) || 0;
             const chemical707 = parseInt(document.getElementById('chemical-707').value) || 0;
             const airLubricant = parseInt(document.getElementById('air-lubricant').value) || 0;
             const knockerLoose = parseInt(document.getElementById('knocker-loose').value) || 0;
             const otherChemical = parseInt(document.getElementById('other-chemical').value) || 0;
 
-            const summary = `
-                Summary for End of Shift:\n
-                Jumbo Wraps Used: ${jumboWraps}\n
-                Jumbo Hands Used: ${jumboHands}\n
-                Small Wraps Used: ${smallWraps}\n
-                Small Hands Used: ${smallHands}\n
-                Rework Pallets Produced: ${reworkPallets}\n
-
-                Chemicals Used:\n
-                - 707: ${chemical707}\n
-                - Air Lubricant: ${airLubricant}\n
-                - Knocker Loose: ${knockerLoose}\n
-                - Other: ${otherChemical}
-
-";
+            summary += `Rework Pallets Produced: ${reworkPallets}\n\n`;
+            summary += `Chemicals Used:\n`;
+            summary += `- 707: ${chemical707}\n`;
+            summary += `- Air Lubricant: ${airLubricant}\n`;
+            summary += `- Knocker Loose: ${knockerLoose}\n`;
+            summary += `- Other: ${otherChemical}\n`;
 
             alert(summary);
         }
@@ -118,6 +123,7 @@
 <body>
     <div class="form-container">
         <header>
+            <img src="pilgrims_logo_transparent.png" alt="Pilgrim's Logo">
             <h1>Box Room Inventory Tracking</h1>
             <div class="date"></div>
         </header>
@@ -125,56 +131,111 @@
             <table>
                 <thead>
                     <tr>
+                        <th>Box Machine</th>
                         <th>Material</th>
                         <th>Count</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- Box Machine 1 -->
                     <tr>
+                        <td rowspan="4">Box Machine #1 (Jumbo)</td>
                         <td>Jumbo Wraps</td>
-                        <td><input type="number" id="jumbo-wraps" placeholder="Enter count"></td>
+                        <td><input type="number" id="jumbo-wraps-1" placeholder="Enter count"></td>
                     </tr>
                     <tr>
                         <td>Jumbo Hands</td>
-                        <td><input type="number" id="jumbo-hands" placeholder="Enter count"></td>
+                        <td><input type="number" id="jumbo-hands-1" placeholder="Enter count"></td>
                     </tr>
                     <tr>
-                        <td>Small Box Wraps</td>
-                        <td><input type="number" id="small-wraps" placeholder="Enter count"></td>
+                        <td>Small Wraps</td>
+                        <td><input type="number" id="small-wraps-1" placeholder="Enter count"></td>
                     </tr>
                     <tr>
-                        <td>Small Box Hands</td>
-                        <td><input type="number" id="small-hands" placeholder="Enter count"></td>
+                        <td>Small Hands</td>
+                        <td><input type="number" id="small-hands-1" placeholder="Enter count"></td>
+                    </tr>
+
+                    <!-- Box Machine 2 -->
+                    <tr>
+                        <td rowspan="4">Box Machine #2 (Small)</td>
+                        <td>Jumbo Wraps</td>
+                        <td><input type="number" id="jumbo-wraps-2" placeholder="Enter count"></td>
                     </tr>
                     <tr>
-                        <td>Rework Pallets Produced</td>
+                        <td>Jumbo Hands</td>
+                        <td><input type="number" id="jumbo-hands-2" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <td>Small Wraps</td>
+                        <td><input type="number" id="small-wraps-2" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <td>Small Hands</td>
+                        <td><input type="number" id="small-hands-2" placeholder="Enter count"></td>
+                    </tr>
+
+                    <!-- Box Machine 3 -->
+                    <tr>
+                        <td rowspan="4">Box Machine #3 (Jumbo)</td>
+                        <td>Jumbo Wraps</td>
+                        <td><input type="number" id="jumbo-wraps-3" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <td>Jumbo Hands</td>
+                        <td><input type="number" id="jumbo-hands-3" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <td>Small Wraps</td>
+                        <td><input type="number" id="small-wraps-3" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <td>Small Hands</td>
+                        <td><input type="number" id="small-hands-3" placeholder="Enter count"></td>
+                    </tr>
+
+                    <!-- Box Machine 4 -->
+                    <tr>
+                        <td rowspan="4">Box Machine #4 (Small)</td>
+                        <td>Jumbo Wraps</td>
+                        <td><input type="number" id="jumbo-wraps-4" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <td>Jumbo Hands</td>
+                        <td><input type="number" id="jumbo-hands-4" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <td>Small Wraps</td>
+                        <td><input type="number" id="small-wraps-4" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <td>Small Hands</td>
+                        <td><input type="number" id="small-hands-4" placeholder="Enter count"></td>
+                    </tr>
+
+                    <!-- Other Details -->
+                    <tr>
+                        <th colspan="2">Rework Pallets Produced</th>
                         <td><input type="number" id="rework-pallets" placeholder="Enter count"></td>
                     </tr>
                     <tr>
                         <th colspan="2">Chemicals Used</th>
+                        <td></td>
                     </tr>
                     <tr>
-                        <td>707</td>
+                        <td colspan="2">707</td>
                         <td><input type="number" id="chemical-707" placeholder="Enter count"></td>
                     </tr>
                     <tr>
-                        <td>Air Lubricant</td>
+                        <td colspan="2">Air Lubricant</td>
                         <td><input type="number" id="air-lubricant" placeholder="Enter count"></td>
                     </tr>
                     <tr>
-                        <td>Knocker Loose</td>
+                        <td colspan="2">Knocker Loose</td>
                         <td><input type="number" id="knocker-loose" placeholder="Enter count"></td>
                     </tr>
                     <tr>
-                        <td>Other (Specify)</td>
+                        <td colspan="2">Other (Specify)</td>
                         <td><input type="number" id="other-chemical" placeholder="Enter count"></td>
                     </tr>
-                </tbody>
-            </table>
-            <div style="text-align: center;">
-                <button type="submit" class="submit-button">Submit and View Summary</button>
-            </div>
-        </form>
-    </div>
-</body>
-</html>
+                </tbody
