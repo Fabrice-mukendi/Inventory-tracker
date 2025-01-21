@@ -9,7 +9,7 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 20px;
-            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            background: linear-gradient(135deg, #edf2fb, #d7e3fc);
             color: #333;
         }
         .form-container {
@@ -17,8 +17,8 @@
             margin: 0 auto;
             padding: 30px;
             background: #fff;
-            border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
         header {
             text-align: center;
@@ -30,12 +30,12 @@
         }
         header h1 {
             margin: 0;
-            font-size: 28px;
-            color: #555;
+            font-size: 32px;
+            color: #444;
         }
         header .date {
-            font-size: 16px;
-            color: #777;
+            font-size: 18px;
+            color: #666;
         }
         table {
             width: 100%;
@@ -44,21 +44,22 @@
             font-size: 16px;
         }
         th, td {
-            padding: 10px;
+            padding: 12px;
             border: 1px solid #ddd;
             text-align: left;
         }
         th {
-            background-color: #f0f4f8;
+            background-color: #f8f9fa;
             font-weight: bold;
             text-transform: uppercase;
         }
         input[type="number"], input[type="text"] {
             width: 100%;
-            padding: 8px;
+            padding: 10px;
             border: 1px solid #ccc;
-            border-radius: 5px;
+            border-radius: 8px;
             box-sizing: border-box;
+            font-size: 14px;
         }
         .submit-button {
             display: inline-block;
@@ -86,47 +87,6 @@
             const today = new Date().toLocaleDateString();
             dateElement.textContent = `Date: ${today}`;
         });
-
-        function calculateSummary() {
-            let summary = "Summary for End of Shift:\\n\\n";
-
-            const machines = {
-                1: "Jumbo",
-                2: "Small",
-                3: "Jumbo",
-                4: "Small"
-            };
-
-            for (let i = 1; i <= 4; i++) {
-                const jumboWraps = parseInt(document.getElementById(`jumbo-wraps-${i}`).value) || 0;
-                const jumboHands = parseInt(document.getElementById(`jumbo-hands-${i}`).value) || 0;
-                const smallWraps = parseInt(document.getElementById(`small-wraps-${i}`).value) || 0;
-                const smallHands = parseInt(document.getElementById(`small-hands-${i}`).value) || 0;
-
-                const chemical707 = parseInt(document.getElementById(`chemical-707-${i}`).value) || 0;
-                const airLubricant = parseInt(document.getElementById(`air-lubricant-${i}`).value) || 0;
-                const knockerLoose = parseInt(document.getElementById(`knocker-loose-${i}`).value) || 0;
-                const otherChemical = parseInt(document.getElementById(`other-chemical-${i}`).value) || 0;
-                const otherChemicalDetails = document.getElementById(`other-chemical-details-${i}`).value || "N/A";
-
-                summary += `Box Machine #${i} (${machines[i]}):\\n`;
-                summary += `- Jumbo Wraps: ${jumboWraps}\\n`;
-                summary += `- Jumbo Hands: ${jumboHands}\\n`;
-                summary += `- Small Wraps: ${smallWraps}\\n`;
-                summary += `- Small Hands: ${smallHands}\\n`;
-                summary += `- Chemicals Used:\\n`;
-                summary += `  - 707: ${chemical707}\\n`;
-                summary += `  - Air Lubricant: ${airLubricant}\\n`;
-                summary += `  - Knocker Loose: ${knockerLoose}\\n`;
-                summary += `  - Other: ${otherChemical} (Details: ${otherChemicalDetails})\\n\\n`;
-            }
-
-            const reworkPallets = parseInt(document.getElementById('rework-pallets').value) || 0;
-
-            summary += `Rework Pallets Produced: ${reworkPallets}\\n\\n`;
-
-            alert(summary);
-        }
     </script>
 </head>
 <body>
@@ -136,7 +96,7 @@
             <h1>Box Room Inventory Tracking</h1>
             <div class="date"></div>
         </header>
-        <form onsubmit="calculateSummary(); return false;">
+        <form action="https://formspree.io/f/mdkkjgrr" method="POST">
             <table>
                 <thead>
                     <tr>
@@ -146,13 +106,106 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Add content for each box machine -->
-                </tbody>
-            </table>
-            <div style="text-align: center;">
-                <button type="submit" class="submit-button">Submit and View Summary</button>
-            </div>
-        </form>
-    </div>
-</body>
-</html>
+                    <!-- Box Machine 1 -->
+                    <tr>
+                        <td rowspan="7">Box Machine #1 (Jumbo)</td>
+                        <td>Jumbo Wraps</td>
+                        <td><input type="number" name="jumbo_wraps_1" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <td>Jumbo Hands</td>
+                        <td><input type="number" name="jumbo_hands_1" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <td>707</td>
+                        <td><input type="number" name="chemical_707_1" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <td>Air Lubricant</td>
+                        <td><input type="number" name="air_lubricant_1" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <td>Knocker Loose</td>
+                        <td><input type="number" name="knocker_loose_1" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <td>Other (Specify)</td>
+                        <td>
+                            <input type="number" name="other_chemical_1" placeholder="Enter count">
+                            <input type="text" name="other_chemical_details_1" placeholder="Specify product">
+                        </td>
+                    </tr>
+
+                    <!-- Box Machine 2 -->
+                    <tr>
+                        <td rowspan="7">Box Machine #2 (Small)</td>
+                        <td>Small Wraps</td>
+                        <td><input type="number" name="small_wraps_2" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <td>Small Hands</td>
+                        <td><input type="number" name="small_hands_2" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <td>707</td>
+                        <td><input type="number" name="chemical_707_2" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <td>Air Lubricant</td>
+                        <td><input type="number" name="air_lubricant_2" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <td>Knocker Loose</td>
+                        <td><input type="number" name="knocker_loose_2" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <td>Other (Specify)</td>
+                        <td>
+                            <input type="number" name="other_chemical_2" placeholder="Enter count">
+                            <input type="text" name="other_chemical_details_2" placeholder="Specify product">
+                        </td>
+                    </tr>
+
+                    <!-- Box Machine 3 -->
+                    <tr>
+                        <td rowspan="7">Box Machine #3 (Jumbo)</td>
+                        <td>Jumbo Wraps</td>
+                        <td><input type="number" name="jumbo_wraps_3" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <td>Jumbo Hands</td>
+                        <td><input type="number" name="jumbo_hands_3" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <td>707</td>
+                        <td><input type="number" name="chemical_707_3" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <td>Air Lubricant</td>
+                        <td><input type="number" name="air_lubricant_3" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <td>Knocker Loose</td>
+                        <td><input type="number" name="knocker_loose_3" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <td>Other (Specify)</td>
+                        <td>
+                            <input type="number" name="other_chemical_3" placeholder="Enter count">
+                            <input type="text" name="other_chemical_details_3" placeholder="Specify product">
+                        </td>
+                    </tr>
+
+                    <!-- Box Machine 4 -->
+                    <tr>
+                        <td rowspan="7">Box Machine #4 (Small)</td>
+                        <td>Small Wraps</td>
+                        <td><input type="number" name="small_wraps_4" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <td>Small Hands</td>
+                        <td><input type="number" name="small_hands_4" placeholder="Enter count"></td>
+                    </tr>
+                    <tr>
+                        <td>707</td>
+                        <td><input type="number" name="chemical_707_4" placeholder="Enter count"></td
